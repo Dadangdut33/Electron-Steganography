@@ -4,7 +4,6 @@ import * as path from "path";
 // ----------------------------
 // Vars
 let mainWindow: BrowserWindow | null = null;
-const isDevelopment = process.env.NODE_ENV === "development" || process.env.DEBUG_PROD === "true";
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require("electron-squirrel-startup")) {
@@ -38,7 +37,7 @@ const createWindow = (): void => {
 	});
 
 	// Open the DevTools.
-	if (isDevelopment) mainWindow.webContents.openDevTools();
+	mainWindow.webContents.openDevTools();
 };
 
 // This method will be called when Electron has finished
@@ -77,7 +76,7 @@ menu.append(
 	})
 );
 
-if (!isDevelopment) Menu.setApplicationMenu(menu);
+Menu.setApplicationMenu(menu);
 
 /**
  * Run when the app is unresponsive
