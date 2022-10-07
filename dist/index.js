@@ -14,6 +14,7 @@ var createWindow = function () {
         height: 600,
         width: 800,
         webPreferences: {
+            preload: path.join(__dirname, "./preload.ts"),
             nodeIntegration: true,
             contextIsolation: false
         }
