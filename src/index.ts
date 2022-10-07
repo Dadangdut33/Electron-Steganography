@@ -76,7 +76,8 @@ menu.append(
 		},
 	})
 );
-Menu.setApplicationMenu(menu);
+
+if (!isDevelopment) Menu.setApplicationMenu(menu);
 
 /**
  * Run when the app is unresponsive
@@ -93,5 +94,5 @@ function onUnresponsiveWindow() {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
-import "./ipc/dialogBox.ts";
+import "./ipc/dialogBox";
 import "./ipc/main";
