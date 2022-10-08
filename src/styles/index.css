@@ -185,3 +185,15 @@ span[data-tooltip] {
 .fadeOut {
 	animation: fadeOut 0.2s ease-in-out;
 }
+
+@media screen and (min-width: 1024px) {
+	.columns.is-desktop {
+		display: initial !important;
+	}
+}
+
+@media (min-width: 1290px) {
+	.columns.is-desktop {
+		display: flex !important;
+	}
+}

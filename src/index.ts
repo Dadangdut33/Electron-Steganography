@@ -1,10 +1,12 @@
 import { app, BrowserWindow, dialog, Menu, MenuItem } from "electron";
 import * as path from "path";
+import { iconPath } from "./ipc/icon";
+
+console.log(iconPath);
 
 // ----------------------------
 // Vars
 let mainWindow: BrowserWindow | null = null;
-
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require("electron-squirrel-startup")) {
 	// eslint-disable-line global-require
@@ -16,12 +18,13 @@ const createWindow = (): void => {
 	mainWindow = new BrowserWindow({
 		width: 1000,
 		height: 600,
-		minWidth: 800,
+		minWidth: 900,
 		minHeight: 600,
 		webPreferences: {
 			nodeIntegration: true,
 			contextIsolation: false,
 		},
+		icon: iconPath,
 	});
 
 	// and load the index.html of the app.
@@ -75,7 +78,7 @@ menu.append(
 	})
 );
 
-//Menu.setApplicationMenu(menu);
+Menu.setApplicationMenu(menu);
 
 /**
  * Run when the app is unresponsive
