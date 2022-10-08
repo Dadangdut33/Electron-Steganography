@@ -65,12 +65,11 @@ function fileUploadHandler(e) {
 function writefunc() {
 	let msg = msgElement.value,
 		pass = passElement.value;
-
-	if (writeMsgToCanvas("canvas", msg, pass.length > 0 ? pass : "", level) != null) {
+	if (writeMsgToCanvas_base("canvas", msg, pass, false, 1) === true) {
 		btnSave.disabled = false;
 
 		let myCanvas = document.getElementById("canvas"),
-			image = myCanvas.toDataURL("image/jpeg", 1.0);
+			image = myCanvas.toDataURL("image/png");
 		downloadLinkCache = image;
 
 		imgAfter.width = myCanvas.width;

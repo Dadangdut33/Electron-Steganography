@@ -13,7 +13,6 @@ const level = 0,
 	fileUploadElement = document.getElementById(fileUploadId),
 	fileNameElement = document.getElementById(fileNameId),
 	previewElement = document.getElementById(previewId);
-
 // ---------------------------------------------------------
 // Event Listeners
 fileUploadElement.addEventListener("change", fileUploadHandler, false);
@@ -62,9 +61,12 @@ function resetAll() {
 
 function decryptImage() {
 	let pass = passElement.value;
-	let msg = readMsgFromCanvas(previewId, pass, level);
-	console.log(msg);
-	msgElement.innerHTML = msg;
+	check_msg = readMsgFromCanvas_base(previewId, pass, false, 1);
+	if (check_msg[0] === true) {
+		msgElement.innerHTML = check_msg[1];
+	} else {
+		msgElement.innerHTML = "Wrong picture/password";
+	}
 }
 
 // ---------------------------------------------------------
