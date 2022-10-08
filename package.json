@@ -16,9 +16,19 @@
 	},
 	"keywords": [],
 	"author": {
-		"name": "Dadangdut33",
+		"name": "Dadangdut33 & Neouranos",
 		"email": "57717531+Dadangdut33@users.noreply.github.com"
 	},
+	"contributors": [
+		{
+			"name": "Dadangdut33",
+			"email": "57717531+Dadangdut33@users.noreply.github.com"
+		},
+		{
+			"name": "Neouranos",
+			"email": "63483228+neouranos@users.noreply.github.com"
+		}
+	],
 	"license": "GPL-3.0",
 	"config": {
 		"forge": {
