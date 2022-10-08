@@ -22,6 +22,10 @@ span[data-tooltip] {
 	margin: 2rem;
 }
 
+.img-shown {
+	max-width: 500px;
+}
+
 /* ============== */
 /* Toast */
 .toast {
