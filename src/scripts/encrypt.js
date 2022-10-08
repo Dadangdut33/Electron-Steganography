@@ -80,8 +80,7 @@ function writefunc() {
 }
 
 function writeSecret() {
-	let msg = msgElement.value,
-		pass = passElement.value;
+	let msg = msgElement.value;
 
 	if (msg.length > 0) {
 		loadIMGtoCanvas(fileUploadId, "canvas", writefunc, 500);

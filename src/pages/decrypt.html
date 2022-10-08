@@ -1,90 +1,98 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Elstego</title>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Elstego</title>
 		<link rel="stylesheet" href="../styles/lib/bulma.min.css" />
 		<link rel="stylesheet" href="../styles/lib/fa-all.min.css" />
-    <link rel="stylesheet" href="../styles/index.css" />
+		<link rel="stylesheet" href="../styles/index.css" />
 		<script defer src="../scripts/lib/cryptostego.min.js"></script>
-    <script defer  src="../scripts/links.js"></script>
-    <!-- <script defer src="../scripts/decrypt.js"></script> -->
-  </head>
-  <body>
-    <div class="box menu-container content">
-      <div class="tabs is-centered">
-        <ul class="m-0">
-          <li>
-            <a href="../index.html">
-              <span class="icon is-small"
-                ><i class="fa-solid fa-lock" aria-hidden="true"></i
-              ></span>
-              <span>Encrypt</span>
-            </a>
-          </li>
-          <li class="is-active">
-            <a>
-              <span class="icon is-small"
-                ><i class="fa-solid fa-lock-open" aria-hidden="true"></i
-              ></span>
-              <span>Decrypt</span>
-            </a>
-          </li>
-            <a href="./about.html">
-              <span class="icon is-small"
-                ><i class="fa-solid fa-circle-info" aria-hidden="true"></i
-              ></span>
-              <span>About</span>
-            </a>
-          </li>
-        </ul>
-      </div>
+		<script defer src="../scripts/links.js"></script>
+		<script defer src="../scripts/decrypt.js"></script>
+	</head>
+	<body>
+		<div class="box menu-container content">
+			<div class="tabs is-centered">
+				<ul class="m-0">
+					<li>
+						<a href="../index.html">
+							<span class="icon is-small">
+								<i class="fa-solid fa-lock" aria-hidden="true"></i>
+							</span>
+							<span>Encrypt</span>
+						</a>
+					</li>
+					<li class="is-active">
+						<a>
+							<span class="icon is-small">
+								<i class="fa-solid fa-lock-open" aria-hidden="true"></i>
+							</span>
+							<span>Decrypt</span>
+						</a>
+					</li>
+					<li>
+						<a href="./about.html">
+							<span class="icon is-small">
+								<i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+							</span>
+							<span>About</span>
+						</a>
+					</li>
+				</ul>
+			</div>
 
-      <div class="column">
-        <div class="field">
-          <p class="control has-icons-left">
-            <input class="input" type="password" placeholder="Password (optional)">
-            <span class="icon is-small is-left">
-              <i class="fa-solid fa-key"></i>
-            </span>
-          </p>
-        </div>
-        <div class="field">
-        <div class="file has-name is-fullwidth">
-          <label class="file-label">
-            <input class="file-input" type="file" name="decrypted_message">
-            <span class="file-cta">
-              <span class="file-icon">
-                <i class="fas fa-upload"></i>
-              </span>
-              <span class="file-label">
-                Choose a file…
-              </span>
-            </span>
-            <span class="file-name">
-              xxxx.png
-            </span>
-          </label>
-        </div>
-      </div>
-        <div class="field">
-          <div class="buttons">
-            <button class="button is-success">Decrypt</button>
-            <button class="button is-danger">Reset</button>
-          </div>
-        </div>
-        <div class="field">
-            <article class="message">
-                <div class="message-header">
-                  <p>Decrypted Message</p>
-                </div>
-                <div class="message-body">
-                  Decrypted message will appear here.
-                </div>
-              </article>
-          </div>
-      </div>
-      </div>
-    </div>
-  </body>
+			<div class="column">
+				<div class="field">
+					<p class="control has-icons-left">
+						<input class="input" type="password" placeholder="Password (optional)" id="pass" />
+						<span class="icon is-small is-left">
+							<i class="fa-solid fa-key"></i>
+						</span>
+					</p>
+				</div>
+
+				<div class="field">
+					<div class="file has-name is-fullwidth">
+						<label class="file-label">
+							<input class="file-input" type="file" name="decrypted_message" id="file-up" />
+							<span class="file-cta">
+								<span class="file-icon">
+									<i class="fas fa-upload"></i>
+								</span>
+								<span class="file-label"> Choose a file… </span>
+							</span>
+							<span class="file-name" id="file-name">No file uploaded</span>
+						</label>
+					</div>
+				</div>
+
+				<div class="field">
+					<div class="buttons">
+						<button class="button is-success" id="btn-decrypt" disabled>Decrypt</button>
+						<button class="button is-danger" id="btn-reset">Reset</button>
+					</div>
+				</div>
+
+				<div class="field">
+					<article class="message">
+						<div class="message-header">
+							<p>Decrypted Message</p>
+						</div>
+						<div class="message-body" id="decrypted-msg">Decrypted message will appear here.</div>
+					</article>
+				</div>
+
+				<div class="field">
+					<article class="message">
+						<div class="message-header">
+							<p>Preview</p>
+						</div>
+						<div class="message-body is-flex">
+							<canvas class="img-shown mx-auto" id="preview"></canvas>
+						</div>
+					</article>
+				</div>
+			</div>
+		</div>
+	</body>
 </html>
