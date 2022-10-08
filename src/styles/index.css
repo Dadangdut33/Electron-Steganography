@@ -1,6 +1,7 @@
 body {
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 	margin: auto;
+	overflow-x: auto;
 }
 
 /* ============== */
@@ -23,7 +24,7 @@ span[data-tooltip] {
 }
 
 .img-shown {
-	max-width: 500px;
+	max-width: 600px;
 }
 
 /* ============== */

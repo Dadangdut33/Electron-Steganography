@@ -70,7 +70,8 @@ function writefunc() {
 		btnSave.disabled = false;
 
 		let myCanvas = document.getElementById("canvas"),
-			image = myCanvas.toDataURL("image/jpeg", 1.0);
+			image = myCanvas.toDataURL("image/png");
+
 		downloadLinkCache = image;
 
 		imgAfter.width = myCanvas.width;
@@ -84,6 +85,7 @@ function writeSecret() {
 
 	if (msg.length > 0) {
 		loadIMGtoCanvas(fileUploadId, "canvas", writefunc, 500);
+
 		ipcRenderer.send("status-notif", { msg: "Message written to canvas" });
 	} else {
 		ipcRenderer.send("status-notif", { status: "Error!", msg: "Message must be provided" });

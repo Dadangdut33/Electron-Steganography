@@ -61,10 +61,18 @@ function resetAll() {
 }
 
 function decryptImage() {
-	let pass = passElement.value;
-	let msg = readMsgFromCanvas(previewId, pass, level);
-	console.log(msg);
-	msgElement.innerHTML = msg;
+	function readFunc() {
+		let pass = passElement.value;
+		let msg = readMsgFromCanvas("canvas", pass, level);
+		msg = msg.split("&").join("&amp;");
+		msg = msg.split(" ").join("&nbsp;");
+		msg = msg.split("<").join("&lt;");
+		msg = msg.split(">").join("&gt;");
+		msg = msg.replace(/(?:\r\n|\r|\n)/g, "<br />");
+		msgElement.innerHTML = msg;
+	}
+
+	loadIMGtoCanvas(fileUploadId, "canvas", readFunc, 500);
 }
 
 // ---------------------------------------------------------
