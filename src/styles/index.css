@@ -1,184 +1,182 @@
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
-    Arial, sans-serif;
-  margin: auto;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+	margin: auto;
 }
 
 /* ============== */
 /* for the tooltip */
 span[data-tooltip] {
-  font-weight: initial;
-  border-bottom: none !important;
+	font-weight: initial;
+	border-bottom: none !important;
 }
 
 /* hide the clear button in datetime */
 .datetimepicker-clear-button {
-  display: none !important;
+	display: none !important;
 }
 
 /* ============== */
 /* Top Menu */
 .menu-container {
-  padding: 2rem;
-  margin: 2rem;
+	padding: 2rem;
+	margin: 2rem;
 }
 
 /* ============== */
 /* Toast */
 .toast {
-  position: fixed;
-  top: 0;
-  right: 0;
-  z-index: 9999;
-  width: 100%;
-  padding: 1rem;
-  background-color: #fff;
-  border-radius: 0.5rem;
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
-  animation: slide-in 0.5s ease-out;
+	position: fixed;
+	top: 0;
+	right: 0;
+	z-index: 9999;
+	width: 100%;
+	padding: 1rem;
+	background-color: #fff;
+	border-radius: 0.5rem;
+	box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+	animation: slide-in 0.5s ease-out;
 }
 
 #toast-text {
-  margin: 0;
+	margin: 0;
 }
 
 .toast-close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  padding: 0.5rem;
-  color: #fff;
-  background-color: #000;
-  border-radius: 0.25rem;
-  cursor: pointer;
-  display: block;
-  transform: scale(0.8);
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	padding: 0.5rem;
+	color: #fff;
+	background-color: #000;
+	border-radius: 0.25rem;
+	cursor: pointer;
+	display: block;
+	transform: scale(0.8);
 }
 
 .slide-out {
-  animation: slide-out 0.5s ease-out;
+	animation: slide-out 0.5s ease-out;
 }
 
 @keyframes slide-in {
-  from {
-    transform: translateY(-100%);
-  }
+	from {
+		transform: translateY(-100%);
+	}
 
-  to {
-    transform: translateY(0);
-  }
+	to {
+		transform: translateY(0);
+	}
 }
 
 @keyframes slide-out {
-  from {
-    transform: translateY(0);
-  }
+	from {
+		transform: translateY(0);
+	}
 
-  to {
-    transform: translateY(-100%);
-  }
+	to {
+		transform: translateY(-100%);
+	}
 }
 
 /* ============== */
 /* Image */
 #img-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  padding: 5px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	padding: 5px;
 }
 
 .img-wrapper {
-  position: relative;
-  max-width: 300px;
-  max-height: 170px;
-  overflow: hidden;
-  margin: 0.25rem;
+	position: relative;
+	max-width: 300px;
+	max-height: 170px;
+	overflow: hidden;
+	margin: 0.25rem;
 }
 
 .skipped {
-  position: absolute;
-  /* position adjustment */
-  max-width: 300px;
-  max-height: 170px;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  padding: 0.5rem;
-  margin: 5px;
-  background-color: rgba(0, 0, 0, 0.699);
+	position: absolute;
+	/* position adjustment */
+	max-width: 300px;
+	max-height: 170px;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	padding: 0.5rem;
+	margin: 5px;
+	background-color: rgba(0, 0, 0, 0.699);
 }
 
 .img-desc {
-  position: absolute;
-  /* center it */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  /* position adjustment */
-  max-width: 300px;
-  max-height: 165px;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  padding: 0.5rem;
-  margin: 5px;
-  /* color */
-  background-color: rgba(136, 85, 85, 0.5);
-  color: white;
+	position: absolute;
+	/* center it */
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	/* position adjustment */
+	max-width: 300px;
+	max-height: 165px;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	padding: 0.5rem;
+	margin: 5px;
+	/* color */
+	background-color: rgba(136, 85, 85, 0.5);
+	color: white;
 }
 
 .img-desc p {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  font-weight: bold;
-  max-width: 280px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	font-weight: bold;
+	max-width: 280px;
 }
 
 #image {
-  max-width: 300px;
-  width: 100%;
-  height: 100%;
-  margin: 5px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 9px -2px,
-    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+	max-width: 300px;
+	width: 100%;
+	height: 100%;
+	margin: 5px;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 9px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 
 .clickable i,
 .clickable-self {
-  cursor: pointer;
+	cursor: pointer;
 }
 
 /* Animation/keyframe */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
+	from {
+		opacity: 0;
+	}
 
-  to {
-    opacity: 1;
-  }
+	to {
+		opacity: 1;
+	}
 }
 
 .fadeIn {
-  animation: fadeIn 0.2s ease-in-out;
+	animation: fadeIn 0.2s ease-in-out;
 }
 
 @keyframes fadeOut {
-  from {
-    opacity: 1;
-  }
+	from {
+		opacity: 1;
+	}
 
-  to {
-    opacity: 0;
-  }
+	to {
+		opacity: 0;
+	}
 }
 
 .fadeOut {
-  animation: fadeOut 0.2s ease-in-out;
+	animation: fadeOut 0.2s ease-in-out;
 }

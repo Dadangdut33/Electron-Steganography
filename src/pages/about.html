@@ -1,74 +1,59 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Elstego</title>
-    <link rel="stylesheet" href="../styles/bulma.min.css" />
-    <link rel="stylesheet" href="../styles/fa-all.min.css" />
-    <link rel="stylesheet" href="../styles/index.css" />
-    <script defer type="module" src="../scripts/cryptostego.min.js"></script>
-    <script defer type="module" src="../scripts/links.js"></script>
-    <script defer type="module" src="../scripts/test.js"></script>
-  </head>
-  <body>
-    <div class="box menu-container content">
-      <div class="tabs is-centered">
-        <ul class="m-0">
-          <li>
-            <a href="../index.html">
-              <span class="icon is-small"
-                ><i class="fa-solid fa-lock" aria-hidden="true"></i
-              ></span>
-              <span>Encrypt</span>
-            </a>
-          </li>
-          <li>
-            <a href="./decrypt.html">
-              <span class="icon is-small"
-                ><i class="fa-solid fa-lock-open" aria-hidden="true"></i
-              ></span>
-              <span>Decrypt</span>
-            </a>
-          </li>
-          <li class="is-active">
-            <a>
-              <span class="icon is-small"
-                ><i class="fa-solid fa-circle-info" aria-hidden="true"></i
-              ></span>
-              <span>About</span>
-            </a>
-          </li>
-        </ul>
-      </div>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Elstego</title>
+		<link rel="stylesheet" href="../styles/lib/bulma.min.css" />
+		<link rel="stylesheet" href="../styles/lib/fa-all.min.css" />
+		<link rel="stylesheet" href="../styles/index.css" />
+		<script defer type="module" src="../scripts/lib/cryptostego.min.js"></script>
+		<script defer type="module" src="../scripts/links.js"></script>
+		<script defer type="module" src="../scripts/pages/about.js"></script>
+	</head>
+	<body>
+		<div class="box menu-container content">
+			<div class="tabs is-centered">
+				<ul class="m-0">
+					<li>
+						<a href="../index.html">
+							<span class="icon is-small"><i class="fa-solid fa-lock" aria-hidden="true"></i></span>
+							<span>Encrypt</span>
+						</a>
+					</li>
+					<li>
+						<a href="./decrypt.html">
+							<span class="icon is-small"><i class="fa-solid fa-lock-open" aria-hidden="true"></i></span>
+							<span>Decrypt</span>
+						</a>
+					</li>
+					<li class="is-active">
+						<a>
+							<span class="icon is-small"><i class="fa-solid fa-circle-info" aria-hidden="true"></i></span>
+							<span>About</span>
+						</a>
+					</li>
+				</ul>
+			</div>
 
-      <div class="has-text-centered">
-        <img
-          src="../assets/logo.png"
-          alt="logo"
-          class="logo"
-          style="max-width: 200px"
-        />
-        <p>
-          A simple steganography application. Created by
-          <a id="ext" href="https://github.com/Dadangdut33">Dadangdut33</a> and
-          <a id="ext" href="https://github.com/neouranos">Neouranos</a>.
-        </p>
-      </div>
+			<div class="has-text-centered">
+				<img src="../assets/logo.png" alt="logo" class="logo" style="max-width: 200px" />
+				<p>
+					<a id="ext" href="https://github.com/Dadangdut33/Electron-Steganography">A simple steganography application.</a> Created by
+					<a id="ext" href="https://github.com/Dadangdut33">Dadangdut33</a> and <a id="ext" href="https://github.com/neouranos">Neouranos</a>.
+				</p>
+				<p id="check-ver">Version <span id="ver-id">1.0.0</span></p>
+			</div>
 
-      <hr />
+			<hr />
 
-      <div class="columns">
-        <article class="message is-info">
-          <div class="message-body">
-            <strong>Steganography</strong> software is used to perform a variety
-            of functions in order to hide data, including encoding the data in
-            order to prepare it to be hidden inside another file, keeping track
-            of which bits of the cover text file contain hidden data, encrypting
-            the data to be hidden and extracting hidden data by its intended
-            recipient.
-          </div>
-        </article>
-      </div>
-    </div>
-  </body>
+			<div class="columns">
+				<article class="message is-info">
+					<div class="message-body">
+						<strong>Steganography</strong> software is used to perform a variety of functions in order to hide data, including encoding the data in order to prepare it to be hidden inside
+						another file, keeping track of which bits of the cover text file contain hidden data, encrypting the data to be hidden and extracting hidden data by its intended recipient.
+					</div>
+				</article>
+			</div>
+		</div>
+	</body>
 </html>
