@@ -25,7 +25,7 @@ Steganography desktop app made with electron and CryptoStego
 
 ## Uninstallation
 
-Run the uninstaller if you are using the installer version. If using the portable version, you can just delete the folder. (On windows) If you enable auto run on startup, there might be a registry left behind that you can delete if want to by going to regedit and delete the `Simple Wallpaper Changer` registry on `\HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run`.
+Run the uninstaller if you are using the installer version. If using the portable version, you can just delete the folder.
 
 ## Development
 
