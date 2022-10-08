@@ -2,21 +2,22 @@ const { ipcRenderer } = require("electron");
 
 // ---------------------------------------------------------
 // Variables
-const level = 0,
-	imgBeforeId = "img-before",
+const imgBeforeId = "img-before",
 	imgAfterId = "img-after",
 	msgElementId = "msg",
 	passElementId = "pass",
 	fileUploadId = "file-up",
 	fileNameId = "file-name",
+	proggressId = "proggress",
 	imgBefore = document.getElementById(imgBeforeId),
 	imgAfter = document.getElementById(imgAfterId),
 	msgElement = document.getElementById(msgElementId),
 	passElement = document.getElementById(passElementId),
 	fileUploadElement = document.getElementById(fileUploadId),
-	fileNameElement = document.getElementById(fileNameId);
+	fileNameElement = document.getElementById(fileNameId),
+	proggress = document.getElementById(proggressId);
 
-let downloadLinkCache;
+let downloadLinkCache, selectedImg;
 
 // ---------------------------------------------------------
 // Event Listeners
@@ -45,6 +46,7 @@ function msgElHandler(e) {
 function fileUploadHandler(e) {
 	let file = e.target.files[0];
 	if (file) {
+		selectedImg = file;
 		let reader = new FileReader();
 		reader.onload = function (e) {
 			let img = new Image();
@@ -59,6 +61,15 @@ function fileUploadHandler(e) {
 
 		if (msgElement.value.length > 0) btnEncrypt.disabled = false;
 		fileNameElement.textContent = file.name;
+	} else {
+		// reset img before
+		imgBefore.width = 0;
+		imgBefore.height = 0;
+
+		// reset and other input
+		fileUploadElement.value = "";
+		fileNameElement.textContent = "No file uploaded";
+		btnEncrypt.disabled = true;
 	}
 }
 
@@ -79,6 +90,7 @@ function writefunc() {
 }
 
 function writeSecret() {
+	proggress.removeAttribute("value");
 	let msg = msgElement.value;
 
 	if (msg.length > 0) {
@@ -88,6 +100,11 @@ function writeSecret() {
 	} else {
 		ipcRenderer.send("status-notif", { status: "Error!", msg: "Message must be provided" });
 	}
+
+	// timeout for proggress bar
+	setTimeout(() => {
+		proggress.setAttribute("value", "0");
+	}, 1500);
 }
 
 function resetAll() {
@@ -112,7 +129,7 @@ function saveCanvas() {
 	const now = new Date();
 
 	let link = document.createElement("a");
-	link.download = `encrypted ${now.getTime()}.jpg`;
+	link.download = `encrypted ${now.getTime()}.png`;
 	link.href = downloadLinkCache;
 
 	document.body.appendChild(link);

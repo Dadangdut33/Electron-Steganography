@@ -2,17 +2,19 @@ const { ipcRenderer } = require("electron");
 
 // ---------------------------------------------------------
 // Variables
-const level = 0,
-	msgElementId = "decrypted-msg",
+const msgElementId = "decrypted-msg",
 	passElementId = "pass",
 	fileUploadId = "file-up",
 	fileNameId = "file-name",
 	previewId = "preview",
+	proggressId = "proggress",
 	msgElement = document.getElementById(msgElementId),
 	passElement = document.getElementById(passElementId),
 	fileUploadElement = document.getElementById(fileUploadId),
 	fileNameElement = document.getElementById(fileNameId),
-	previewElement = document.getElementById(previewId);
+	previewElement = document.getElementById(previewId),
+	proggress = document.getElementById(proggressId);
+
 // ---------------------------------------------------------
 // Event Listeners
 fileUploadElement.addEventListener("change", fileUploadHandler, false);
@@ -43,6 +45,11 @@ function fileUploadHandler(e) {
 		fileNameElement.textContent = file.name;
 	} else {
 		btnDecrypt.disabled = true;
+		fileNameElement.textContent = "No file uploaded";
+
+		// reset img after
+		previewElement.width = 0;
+		previewElement.height = 0;
 	}
 }
 
@@ -60,6 +67,8 @@ function resetAll() {
 }
 
 function decryptImage() {
+	proggress.removeAttribute("value");
+
 	let pass = passElement.value;
 	check_msg = readMsgFromCanvas_base(previewId, pass, false, 1);
 	if (check_msg[0] === true) {
@@ -67,6 +76,11 @@ function decryptImage() {
 	} else {
 		msgElement.innerHTML = "Wrong picture/password";
 	}
+
+	// timeout for proggress bar
+	setTimeout(() => {
+		proggress.setAttribute("value", "0");
+	}, 1500);
 }
 
 // ---------------------------------------------------------

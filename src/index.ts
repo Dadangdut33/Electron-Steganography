@@ -1,4 +1,4 @@
-import { app, BrowserWindow, dialog, ipcMain, Menu, MenuItem } from "electron";
+import { app, BrowserWindow, dialog, Menu, MenuItem } from "electron";
 import * as path from "path";
 
 // ----------------------------
