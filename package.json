@@ -1,7 +1,7 @@
 {
 	"name": "electron-steganography",
 	"productName": "electron-steganography",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Steganography desktop app made with electron and CryptoStego",
 	"main": "dist/index.js",
 	"scripts": {
