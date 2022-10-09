@@ -17,17 +17,42 @@
 
 Steganography desktop app made with electron and CryptoStego
 
-## Installation
+---
 
-1. Download the latest release from [GitHub](https://github.com/Dadangdut33/Electron-Steganography/releases/latest)
+# Table of Contents
+
+- [Table of Contents](#table-of-contents)
+- [Showcase](#showcase)
+- [Installation](#installation)
+- [Uninstallation](#uninstallation)
+- [Development](#development)
+    - [Watch ts file changes](#watch-ts-file-changes)
+    - [Compiling](#compiling)
+- [Reporting Bugs/Feature Request](#reporting-bugsfeature-request)
+- [Dislaimer](#dislaimer)
+
+# Showcase
+
+<details open>
+  <summary>Preview</summary>
+  <p align="center">
+      <img src="https://raw.githubusercontent.com/Dadangdut33/electron-steganography/master/preview/1.png" width="700" alt="Preview 1">
+      <img src="https://raw.githubusercontent.com/Dadangdut33/electron-steganography/master/preview/2.png" width="700" alt="Preview 2">
+      <img src="https://raw.githubusercontent.com/Dadangdut33/electron-steganography/master/preview/3.png" width="700" alt="Preview 3">
+  </p>
+</details>
+
+# Installation
+
+1. Download the latest release from [GitHub](https://github.com/Dadangdut33/Electron-Steganography/releases/latest) or [sourceforge](https://sourceforge.net/projects/electron-steganography/)
 2. Extract/Install
 3. Run the program
 
-## Uninstallation
+# Uninstallation
 
 Run the uninstaller if you are using the installer version. If using the portable version, you can just delete the folder.
 
-## Development
+# Development
 
 This project uses yarn so please use `yarn` to install all the packages. To start developing you can use `yarn start` and to build the app you can use `yarn build`.
 
@@ -47,7 +72,7 @@ yarn make --arch=ia32
 yarn make --arch=x64
 ```
 
-If error keeps popping out when trying to compile on linux, try to install the packages using `npm install` instead of `yarn install`.
+**If error keeps popping out when trying to compile on linux**, try to install the packages using `npm install` instead of `yarn install`.
 
 # Reporting Bugs/Feature Request
 
