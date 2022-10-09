@@ -42,7 +42,9 @@
 					"config": {
 						"name": "electron-steganography",
 						"authors": "Dadangdut33 & Neouranos",
-						"iconUrl": "https://raw.githubusercontent.com/Dadangdut33/Electron-Steganography/master/src/assets/Icon.ico"
+						"iconUrl": "https://raw.githubusercontent.com/Dadangdut33/Electron-Steganography/master/src/assets/Icon.ico",
+						"setupIcon": "./src/assets/Icon.ico",
+						"skipUpdateIcon": true
 					}
 				},
 				{
