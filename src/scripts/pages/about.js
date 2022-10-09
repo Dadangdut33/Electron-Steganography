@@ -14,7 +14,7 @@ checkVer.addEventListener("click", function () {
 			if (latestVer > curVerVar) {
 				ipcRenderer.send("update-available", latestVer);
 			} else {
-				ipcRenderer.send("update-not-available", latestVer);
+				ipcRenderer.send("update-not-available", curVerVar);
 			}
 		});
 });
