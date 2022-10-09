@@ -47,6 +47,8 @@ yarn make --arch=ia32
 yarn make --arch=x64
 ```
 
+If error keeps popping out when trying to compile on linux, try to install the packages using `npm install` instead of `yarn install`.
+
 # Reporting Bugs/Feature Request
 
 If you encounter any bugs with the program, you can report them by opening an issue on the github repository. You can also request a feature by opening an issue.
