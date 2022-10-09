@@ -1,10 +1,12 @@
 var ipcRenderer = require("electron").ipcRenderer;
 // ---------------------------------------------------------
 // Variables
-var imgBeforeId = "img-before", imgAfterId = "img-after", msgElementId = "msg", passElementId = "pass", fileUploadId = "file-up", fileNameId = "file-name", proggressId = "proggress", imgBefore = document.getElementById(imgBeforeId), imgAfter = document.getElementById(imgAfterId), msgElement = document.getElementById(msgElementId), passElement = document.getElementById(passElementId), fileUploadElement = document.getElementById(fileUploadId), fileNameElement = document.getElementById(fileNameId), proggress = document.getElementById(proggressId);
+var imgBeforeId = "img-before", imgAfterId = "img-after", msgElementId = "msg", passElementId = "pass", fileUploadId = "file-up", fileNameId = "file-name", proggressId = "proggress", radioScaleOriId = "radio-scale-ori", radioScaledId = "radio-scaled", fieldScaleId = "field-scale", inputScaleId = "scale-input", imgBefore = document.getElementById(imgBeforeId), imgAfter = document.getElementById(imgAfterId), msgElement = document.getElementById(msgElementId), passElement = document.getElementById(passElementId), fileUploadElement = document.getElementById(fileUploadId), fileNameElement = document.getElementById(fileNameId), proggress = document.getElementById(proggressId), radioScaleOriElement = document.getElementById(radioScaleOriId), radioScaledElement = document.getElementById(radioScaledId), fieldScaleElement = document.getElementById(fieldScaleId), inputScaleElement = document.getElementById(inputScaleId);
 var downloadLinkCache, selectedImg;
 // ---------------------------------------------------------
 // Event Listeners
+radioScaleOriElement.addEventListener("click", hideFieldScale);
+radioScaledElement.addEventListener("click", showFieldScale);
 msgElement.addEventListener("input", msgElHandler);
 fileUploadElement.addEventListener("change", fileUploadHandler, false);
 var btnEncrypt = document.getElementById("btn-encrypt");
@@ -14,6 +16,12 @@ btnReset.addEventListener("click", resetAll);
 var btnSave = document.getElementById("btn-save");
 btnSave.addEventListener("click", saveCanvas);
 // ---------------------------------------------------------
+function hideFieldScale() {
+    fieldScaleElement.style.display = "none";
+}
+function showFieldScale() {
+    fieldScaleElement.style.display = "block";
+}
 function msgElHandler(e) {
     var msg = e.target.value;
     if (msg.length > 0 && fileUploadElement.value.length > 0) {
@@ -54,7 +62,7 @@ function fileUploadHandler(e) {
 }
 function writefunc() {
     var msg = msgElement.value, pass = passElement.value;
-    if (writeMsgToCanvas_base("canvas", msg, pass, false, 1) === true) {
+    if (writeMsgToCanvas_base("canvas", msg.trim(), pass.trim(), false, 1) === true) {
         btnSave.disabled = false;
         var myCanvas = document.getElementById("canvas"), image = myCanvas.toDataURL("image/png");
         downloadLinkCache = image;
@@ -66,9 +74,35 @@ function writefunc() {
 function writeSecret() {
     proggress.removeAttribute("value");
     var msg = msgElement.value;
+    // check for scale input if checked
+    if (radioScaledElement.checked) {
+        var scale = parseInt(inputScaleElement.value);
+        var img = new Image();
+        img.src = URL.createObjectURL(selectedImg);
+        if (isNaN(scale) || scale < 1) {
+            ipcRenderer.send("status-notif", { status: "Error!", msg: "Invalid number provided!" });
+            return;
+        }
+        else if (scale > img.width) {
+            // warn user with a dialog
+            var x_1 = confirm("Warning! Scale inputted is greater than image width. This might crash the app unless you have a powerfull PC. Do you want to continue?");
+            if (x_1 === false) {
+                proggress.setAttribute("value", "0");
+                return;
+            }
+        }
+    }
     if (msg.length > 0) {
-        loadIMGtoCanvas(fileUploadId, "canvas", writefunc, 500);
-        ipcRenderer.send("status-notif", { msg: "Message written to canvas" });
+        ipcRenderer.send("status-notif", { msg: "Encrypting..." });
+        if (radioScaleOriElement.checked) {
+            loadIMGtoCanvas(fileUploadId, "canvas", writefunc);
+        }
+        else {
+            loadIMGtoCanvas(fileUploadId, "canvas", writefunc, parseInt(inputScaleElement.value));
+        }
+        setTimeout(function () {
+            ipcRenderer.send("status-notif", { msg: "Message encrypted to canvas" });
+        }, 1500);
     }
     else {
         ipcRenderer.send("status-notif", { status: "Error!", msg: "Message must be provided" });

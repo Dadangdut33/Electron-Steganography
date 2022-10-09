@@ -69,6 +69,27 @@
 						</label>
 					</div>
 				</div>
+
+				<div class="field">
+					<div class="control">
+						<label class="radio">
+							<input type="radio" name="question" checked id="radio-scale-ori" />
+							Keep original size
+						</label>
+						<label class="radio">
+							<input type="radio" name="question" id="radio-scaled" />
+							Scale image width to
+						</label>
+					</div>
+				</div>
+
+				<div class="field" id="field-scale" style="display: none">
+					<div class="control">
+						<input class="input" type="number" min="0" placeholder="500" id="scale-input" />
+					</div>
+					<p class="help">Scale down the image to lower processing power. Recommendation 500px</p>
+				</div>
+
 				<div class="field">
 					<div class="buttons">
 						<progress class="progress is-small is-primary" max="100" value="0" id="proggress"></progress>
