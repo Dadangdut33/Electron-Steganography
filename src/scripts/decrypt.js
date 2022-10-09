@@ -61,18 +61,21 @@ function resetAll() {
 	// reset and other input
 	fileUploadElement.value = "";
 	fileNameElement.textContent = "No file uploaded";
-	msgElement.value = "Decrypted message will appear here.";
+	msgElement.innerHTML = "<em>Decrypted message will appear here.</em>";
 	passElement.value = "";
 	btnDecrypt.disabled = true;
 }
 
 function decryptImage() {
+	ipcRenderer.send("status-notif", { msg: "Decrypting..." });
 	proggress.removeAttribute("value");
 
 	let pass = passElement.value;
-	check_msg = readMsgFromCanvas_base(previewId, pass, false, 1);
+	check_msg = readMsgFromCanvas_base(previewId, pass.trim(), false, 1);
 	if (check_msg[0] === true) {
 		msgElement.innerHTML = check_msg[1];
+
+		ipcRenderer.send("status-notif", { msg: "Message Decrypted successfully!" });
 	} else {
 		msgElement.innerHTML = "Wrong picture/password";
 	}

@@ -138,9 +138,7 @@ function writeSecret() {
 			loadIMGtoCanvas(fileUploadId, "canvas", writefunc, parseInt(inputScaleElement.value));
 		}
 
-		setTimeout(() => {
-			ipcRenderer.send("status-notif", { msg: "Message encrypted to canvas" });
-		}, 1500);
+		ipcRenderer.send("status-notif", { msg: "Message encrypted to image successfully!" });
 	} else {
 		ipcRenderer.send("status-notif", { status: "Error!", msg: "Message must be provided" });
 	}
