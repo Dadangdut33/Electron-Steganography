@@ -2,8 +2,6 @@ import { app, BrowserWindow, dialog, Menu, MenuItem } from "electron";
 import * as path from "path";
 import { iconPath } from "./ipc/icon";
 
-console.log(iconPath);
-
 // ----------------------------
 // Vars
 let mainWindow: BrowserWindow | null = null;

@@ -2,7 +2,7 @@ var ipcRenderer = require("electron").ipcRenderer;
 // ---------------------------------------------------------
 // Variables
 var imgBeforeId = "img-before", imgAfterId = "img-after", msgElementId = "msg", passElementId = "pass", fileUploadId = "file-up", fileNameId = "file-name", proggressId = "proggress", radioScaleOriId = "radio-scale-ori", radioScaledId = "radio-scaled", fieldScaleId = "field-scale", inputScaleId = "scale-input", imgBefore = document.getElementById(imgBeforeId), imgAfter = document.getElementById(imgAfterId), msgElement = document.getElementById(msgElementId), passElement = document.getElementById(passElementId), fileUploadElement = document.getElementById(fileUploadId), fileNameElement = document.getElementById(fileNameId), proggress = document.getElementById(proggressId), radioScaleOriElement = document.getElementById(radioScaleOriId), radioScaledElement = document.getElementById(radioScaledId), fieldScaleElement = document.getElementById(fieldScaleId), inputScaleElement = document.getElementById(inputScaleId);
-var downloadLinkCache, selectedImg;
+var downloadLinkCache, selectedImgWidth;
 // ---------------------------------------------------------
 // Event Listeners
 radioScaleOriElement.addEventListener("click", hideFieldScale);
@@ -34,7 +34,6 @@ function msgElHandler(e) {
 function fileUploadHandler(e) {
     var file = e.target.files[0];
     if (file) {
-        selectedImg = file;
         var reader = new FileReader();
         reader.onload = function (e) {
             var img = new Image();
@@ -42,6 +41,7 @@ function fileUploadHandler(e) {
                 imgBefore.width = img.width;
                 imgBefore.height = img.height;
                 imgBefore.getContext("2d").drawImage(img, 0, 0);
+                selectedImgWidth = img.width;
             };
             img.src = e.target.result;
         };
@@ -77,13 +77,12 @@ function writeSecret() {
     // check for scale input if checked
     if (radioScaledElement.checked) {
         var scale = parseInt(inputScaleElement.value);
-        var img = new Image();
-        img.src = URL.createObjectURL(selectedImg);
         if (isNaN(scale) || scale < 1) {
             ipcRenderer.send("status-notif", { status: "Error!", msg: "Invalid number provided!" });
+            proggress.setAttribute("value", "0");
             return;
         }
-        else if (scale > img.width) {
+        else if (scale > selectedImgWidth) {
             // warn user with a dialog
             var x_1 = confirm("Warning! Scale inputted is greater than image width. This might crash the app unless you have a powerfull PC. Do you want to continue?");
             if (x_1 === false) {

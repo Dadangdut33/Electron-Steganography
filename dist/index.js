@@ -3,7 +3,6 @@ exports.__esModule = true;
 var electron_1 = require("electron");
 var path = require("path");
 var icon_1 = require("./ipc/icon");
-console.log(icon_1.iconPath);
 // ----------------------------
 // Vars
 var mainWindow = null;

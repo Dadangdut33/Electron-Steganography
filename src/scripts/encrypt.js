@@ -25,7 +25,7 @@ const imgBeforeId = "img-before",
 	fieldScaleElement = document.getElementById(fieldScaleId),
 	inputScaleElement = document.getElementById(inputScaleId);
 
-let downloadLinkCache, selectedImg;
+let downloadLinkCache, selectedImgWidth;
 
 // ---------------------------------------------------------
 // Event Listeners
@@ -64,7 +64,6 @@ function msgElHandler(e) {
 function fileUploadHandler(e) {
 	let file = e.target.files[0];
 	if (file) {
-		selectedImg = file;
 		let reader = new FileReader();
 		reader.onload = function (e) {
 			let img = new Image();
@@ -72,6 +71,7 @@ function fileUploadHandler(e) {
 				imgBefore.width = img.width;
 				imgBefore.height = img.height;
 				imgBefore.getContext("2d").drawImage(img, 0, 0);
+				selectedImgWidth = img.width;
 			};
 			img.src = e.target.result;
 		};
@@ -114,13 +114,12 @@ function writeSecret() {
 	// check for scale input if checked
 	if (radioScaledElement.checked) {
 		let scale = parseInt(inputScaleElement.value);
-		const img = new Image();
-		img.src = URL.createObjectURL(selectedImg);
 
 		if (isNaN(scale) || scale < 1) {
 			ipcRenderer.send("status-notif", { status: "Error!", msg: "Invalid number provided!" });
+			proggress.setAttribute("value", "0");
 			return;
-		} else if (scale > img.width) {
+		} else if (scale > selectedImgWidth) {
 			// warn user with a dialog
 			const x = confirm("Warning! Scale inputted is greater than image width. This might crash the app unless you have a powerfull PC. Do you want to continue?");
 			if (x === false) {
