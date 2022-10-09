@@ -32,12 +32,17 @@
 	"license": "GPL-3.0",
 	"config": {
 		"forge": {
-			"packagerConfig": {},
+			"packagerConfig": {
+				"icon": "./src/assets/Icon.ico",
+				"name": "electron-steganography"
+			},
 			"makers": [
 				{
 					"name": "@electron-forge/maker-squirrel",
 					"config": {
-						"name": "electron_steganography"
+						"name": "electron-steganography",
+						"authors": "Dadangdut33 & Neouranos",
+						"iconUrl": "https://raw.githubusercontent.com/Dadangdut33/Electron-Steganography/master/src/assets/Icon.ico"
 					}
 				},
 				{
@@ -48,11 +53,26 @@
 				},
 				{
 					"name": "@electron-forge/maker-deb",
-					"config": {}
+					"config": {
+						"options": {
+							"bin": "electron-steganography",
+							"name": "electron-steganography",
+							"maintainer": "Dadangdut33 & Neouranos",
+							"homepage": "https://github.com/Dadangdut33/electron-steganography",
+							"icon": "./src/assets/Icon.png"
+						}
+					}
 				},
 				{
 					"name": "@electron-forge/maker-rpm",
-					"config": {}
+					"config": {
+						"options": {
+							"bin": "electron-steganography",
+							"name": "electron-steganography",
+							"maintainer": "Dadangdut33 & Neouranos",
+							"homepage": "https://github.com/Dadangdut33/electron-steganography"
+						}
+					}
 				}
 			]
 		}
